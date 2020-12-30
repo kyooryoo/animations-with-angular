@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AnimboxComponent } from './animbox.component';
 import { MouseComponent } from './mouse.component';
+import { FadeBlockComponent } from './fadeblock.component';
 
 import { HomeComponent } from './routes/home.component';
 import { BasicComponent } from './routes/basic.component';
@@ -14,12 +15,37 @@ import { AdvancedComponent } from './routes/advanced.component';
 import { NotFoundComponent } from './routes/notfound.component';
 
 const animationRoutes: Routes = [
-  { path: 'animation-home', component: HomeComponent },
-  { path: 'animation-basics', component: BasicComponent },
-  { path: 'animation-contained', component: ContainedComponent },
-  { path: 'animation-advanced', component: AdvancedComponent },
-  { path: '', redirectTo: '/animation-home', pathMatch: 'full' },
-  { path: '**', component: NotFoundComponent },
+  {
+    path: 'animation-home',
+    component: HomeComponent,
+    data: { animation: { value: 'home' } },
+  },
+  {
+    path: 'animation-basics',
+    component: BasicComponent,
+    data: { animation: { value: 'basics' } },
+  },
+  {
+    path: 'animation-contained',
+    component: ContainedComponent,
+    data: { animation: { value: 'contained' } },
+  },
+  {
+    path: 'animation-advanced',
+    component: AdvancedComponent,
+    data: { animation: { value: 'advanced' } },
+  },
+  {
+    path: '',
+    redirectTo: '/animation-home',
+    pathMatch: 'full',
+    data: { animation: { value: 'home' } },
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+    data: { animation: { value: 'notfound' } },
+  },
 ];
 
 @NgModule({
@@ -27,6 +53,7 @@ const animationRoutes: Routes = [
     AppComponent,
     AnimboxComponent,
     MouseComponent,
+    FadeBlockComponent,
     HomeComponent,
     BasicComponent,
     ContainedComponent,
